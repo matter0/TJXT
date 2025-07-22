@@ -232,4 +232,12 @@ public class LearningLessonServiceImpl extends ServiceImpl<LearningLessonMapper,
                 .collect(Collectors.toMap(CourseSimpleInfoDTO::getId, c -> c));
         return cMap;
     }
+    public LearningLesson queryByUserAndCourseId(Long userId,Long courseId){
+        List<LearningLesson> list = lambdaQuery()
+                .eq(LearningLesson::getUserId, userId)
+                .eq(LearningLesson::getCourseId, courseId)
+                .list();
+        LearningLesson lesson = list.get(0);
+        return lesson;
+    }
 }
