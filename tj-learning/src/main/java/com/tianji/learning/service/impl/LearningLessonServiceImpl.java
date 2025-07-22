@@ -201,9 +201,9 @@ public class LearningLessonServiceImpl extends ServiceImpl<LearningLessonMapper,
         vo.setId(lesson.getId());
         vo.setCourseId(lesson.getCourseId());
         vo.setStatus(lesson.getStatus());
-        vo.setLearnedSections(lesson.getLearnedSections());      // 已学习章节数
-        vo.setCreateTime(lesson.getCreateTime());                // 创建时间
-        vo.setExpireTime(lesson.getExpireTime());               // 过期时间
+        vo.setLearnedSections(lesson.getLearnedSections());
+        vo.setCreateTime(lesson.getCreateTime());
+        vo.setExpireTime(lesson.getExpireTime());
         vo.setPlanStatus(lesson.getPlanStatus());
         return vo;
     }
