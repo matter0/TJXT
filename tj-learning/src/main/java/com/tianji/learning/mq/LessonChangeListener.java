@@ -49,7 +49,7 @@ public class LessonChangeListener {
     */
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "learning.lesson.cancel.queue",durable = "true"),
-            exchange = @Exchange(name = MqConstants.Exchange.ORDER_EXCHANGE),
+            exchange = @Exchange(name = MqConstants.Exchange.ORDER_EXCHANGE,type = ExchangeTypes.TOPIC),
             key = MqConstants.Key.ORDER_REFUND_KEY
     ))
     public void listenCancelLesson(OrderBasicDTO order){

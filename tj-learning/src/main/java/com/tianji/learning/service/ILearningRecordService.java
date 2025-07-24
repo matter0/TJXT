@@ -5,6 +5,8 @@ import com.tianji.learning.domain.dto.LearningRecordFormDto;
 import com.tianji.learning.domain.po.LearningRecord;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.time.LocalDateTime;
+
 /**
  * <p>
  * 学习记录表 服务类
@@ -16,5 +18,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface ILearningRecordService extends IService<LearningRecord> {
 
     LearningLessonDTO queryLearningRecordByCourse(Long courseId);
+
+    void addLearningRecord(LearningRecordFormDto formDto);
+
+    Integer countLearnedSections(Long userId, LocalDateTime begin,LocalDateTime end);
+
+    Integer countWeekLearnedSections(Long lessonId,Long userId, LocalDateTime begin,LocalDateTime end);
 }
 

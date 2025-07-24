@@ -8,11 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -36,8 +32,12 @@ public class LearningRecordController {
             @ApiParam(value = "课程id",example = "2")
             @PathVariable("courseId")Long courseId){
         return learningRecordService.queryLearningRecordByCourse(courseId);
+    }
 
-
+    @ApiOperation("提交学习记录")
+    @PostMapping
+    public void addLearningRecord(@RequestBody LearningRecordFormDto formDto){
+         learningRecordService.addLearningRecord(formDto);
     }
 
 }

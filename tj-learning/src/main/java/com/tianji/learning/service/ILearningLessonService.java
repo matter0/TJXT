@@ -6,6 +6,7 @@ import com.tianji.common.domain.query.PageQuery;
 import com.tianji.learning.domain.po.LearningLesson;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.tianji.learning.domain.vo.LearningLessonVO;
+import com.tianji.learning.domain.vo.LearningPlanPageVO;
 import com.tianji.learning.enums.LessonStatus;
 
 import java.util.List;
@@ -36,6 +37,11 @@ public interface ILearningLessonService extends IService<LearningLesson> {
     Integer countLearningLessonByCourse(Long courseId);
 
     LearningLesson queryByUserAndCourseId(Long userId,Long courseId);
+
+
+    void createLearnPlan(Long courseId, Integer freq);
+
+    LearningPlanPageVO queryMyPlans(PageQuery query);
 }
 
 

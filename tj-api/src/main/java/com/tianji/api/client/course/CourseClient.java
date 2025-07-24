@@ -27,7 +27,6 @@ public interface CourseClient {
      */
     @GetMapping("/course/section/{id}")
     SectionInfoDTO sectionInfo(@PathVariable("id") Long sectionId);
-
     /**
      * 根据媒资Id列表查询媒资被引用的次数
      *
@@ -45,7 +44,6 @@ public interface CourseClient {
      */
     @GetMapping("/course/{id}/searchInfo")
     CourseSearchDTO getSearchInfo(@PathVariable("id") Long id);
-
     /**
      * 根据课程id集合查询课程简单信息
      * @param ids id集合
