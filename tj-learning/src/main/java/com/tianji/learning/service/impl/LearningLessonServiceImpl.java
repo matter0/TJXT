@@ -53,7 +53,7 @@ import java.util.stream.Collectors;
 public class LearningLessonServiceImpl extends ServiceImpl<LearningLessonMapper, LearningLesson> implements ILearningLessonService {
     private final CourseClient courseClient;
     private final CatalogueClient catalogueClient;
-    private final ILearningRecordService learningRecordService;
+    private final LearningRecordMapper learningRecordMapper;
 
 
 
@@ -284,7 +284,7 @@ public class LearningLessonServiceImpl extends ServiceImpl<LearningLessonMapper,
         LocalDateTime begin= DateUtils.getWeekBeginTime(now);
         LocalDateTime end = DateUtils.getWeekEndTime(now);
         //统计lesson中所有的已经学习的小节数量
-        Integer sumLearnedSections = learningRecordService.countLearnedSections(userId, begin, end);
+        Integer sumLearnedSections = learningRecordMapper.countLearnedSections(userId, begin, end);
         vo.setWeekFinished(sumLearnedSections);
         //统计lesson中所有的本周计划学习小结数量
         //分页查询lesson课表中的所有正在学习的课程数据lessons
@@ -322,7 +322,7 @@ public class LearningLessonServiceImpl extends ServiceImpl<LearningLessonMapper,
             //总已经学习的小节数量
             planVO.setLearnedSections(lesson.getLearnedSections());
             //本周学习的小结数量
-            planVO.setWeekLearnedSections(learningRecordService.countWeekLearnedSections(lesson.getId(),userId,begin,end));
+            planVO.setWeekLearnedSections(learningRecordMapper.countWeekLearnedSections(lesson.getId(),userId,begin,end));
             //添加到list集合
             list.add(planVO);
         }

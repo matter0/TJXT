@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tianji.learning.mapper.LearningRecordMapper">
+    <!-- 统计用户时间段内完成的小节数 -->
+    <select id="countLearnedSections" resultType="java.lang.Integer">
+           select count(*)
+           from learning_record
+           where user_id=#{userId}
+           and finished=true
+           and finish_time > #{begin}
+           and finish_time &lt; #{end}
 
+    </select>
+    <!-- 统计用户指定课程的时间段内完成的小节数 -->
+    <select id="countWeekLearnedSections" resultType="java.lang.Integer">
+        SELECT COUNT(*)
+        FROM learning_record
+        WHERE lesson_id = #{lessonId}
+        AND user_id = #{userId}
+        AND finished = true
+        AND finish_time > #{begin}
+        AND finish_time &lt; #{end}
+    </select>
 </mapper>
