@@ -2,6 +2,8 @@ package com.tianji.learning.service;
 
 import com.tianji.learning.domain.po.PointsBoardSeason;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.tianji.learning.domain.query.PointsBoardQuery;
+import com.tianji.learning.domain.vo.PointsBoardVO;
 
 /**
  * <p>
